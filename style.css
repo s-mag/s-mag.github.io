@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300,400,500&display=swap')
 
 :root {
   --background-color: #252525;
@@ -15,7 +15,7 @@
 
 html,
 body {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Fira Code', monospace;
   background-color: var(--background-color);
   color: var(--primary-color);
   min-height: 100vh;
