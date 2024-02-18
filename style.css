@@ -45,7 +45,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    overflow: scroll;
+    overflow: visible;
     padding: 0;
     display: block;
     padding: 40px 20px 200px;
