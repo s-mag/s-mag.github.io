@@ -1,120 +1,269 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500");
 
+:root {
+  --background-color: #252525;
+  --primary-color: #ffffffa0;
+  --secondary-color: #cea800fc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Source Code Pro', monospace;
-    background-color: #EEEEEE;
-}
-body {
-    overflow: hidden; /* Hide scrollbars */
-}
-
-header {
-    height: 80vh;
-    background-color: #252525;
-    color: #F5F5F5;
-}
-
-header > div {
-    padding-top: 10%;
-}
-
-header > div,
-.footer .container {
-    max-width: 65%;
-    margin: 0 auto;
+  font-family: 'Source Code Pro', monospace;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+  padding-block: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .introduction {
-    font-size: 1.5rem; /* Adjusted font size for better readability */
-    line-height: 1.6; /* Improved line height for better text flow */
-    letter-spacing: normal; /* Adjusted letter spacing for better readability */
-    padding: 5% 5% 2% 5%; /* Adjusted padding for better spacing */
-    text-align: justify; /* Added text alignment for a cleaner look */
-    max-width: 900px; /* Added a max width to control the width of the text block */
-    margin: 0 auto; /* Center the introduction text block */
+  font-size: 1.5rem;
+  line-height: 1.6;
+  max-width: 80%;
+  padding-inline: 20px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 4px;
+  position: relative;
+  z-index: 1;
 }
 
-.line {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+.introduction li {
+  margin-bottom: 20px;
 }
 
-.line-number {
-    width: 14px;
-    margin-right: 1.5rem;
-    opacity: 0.33;
-    user-select: none;
-}
-
-.line-content,
-.line-content mark {
-    font-size: 18px;
-    line-height: 30px;
-    letter-spacing: 4px;
-    opacity: 85%;
-}
-
-.line-content mark,
-mark {
-    background: transparent;
-    color: rgba(206, 168, 0, 0.99);
-}
-
-.empty-line {
-    background: linear-gradient(to bottom, #252423, #252525);
-}
-
-.empty-line .line-number {
+@media (max-width: 768px) {
+  body {
+    padding: 0;
     display: block;
+    padding: 40px 20px 200px;
+  }
+  .introduction li {
+    margin-bottom: 5px;
+  }
 }
 
-.empty-line .line-number-a {
-    opacity: 0.15;
-}
-
-.empty-line .line-number-b {
-    opacity: 0.1;
+.introduction mark {
+  background: transparent;
+  color: var(--secondary-color);
 }
 
 a {
-    color: #ffffff;
-    text-decoration: none;
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 a:hover {
-    color: rgba(206, 168, 0, 0.99);
-    text-decoration: none;
+  color: var(--secondary-color);
+  text-decoration: none;
 }
 
 .footer {
-    height: 100%;
-    padding: 2%;
-    background-color: #252525;
-    color: #F5F5F5;
+  margin-top: 40px;
+  color: var(--primary-color);
 }
 
-.footer-content {
-    padding-bottom: 5vh;
+@media (max-width: 767px) {
+  .introduction {
+    font-size: 13px;
+  }
 }
 
-@media only screen and (max-width: 767px) {
-    header > div,
-    .introduction {
-        padding-top: 5%;
-        max-width: 80%; /* More responsive width */
-    }
 
-    header {
-        height: 90vh;
-    }
+.footer .container {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 70px;
+  z-index: 1;
+}
 
-    .introduction {
-        font-size: 1rem; 
-        padding: 5% 3%; 
-    }
+@media (max-width: 768px) {
+  .footer .container {
+    padding-bottom: 10px;
+    justify-content: center;
+  }
+}
+
+.animated-arrow {
+  width: 70px;
+  display: inline-block;
+  height: 70px; 
+  margin: 0 auto;
+  transform: rotate(85deg) scaleX(-1);
+  position: absolute;
+  right: -40px;
+  bottom: -10px;
+}
+
+.animated-arrow-part {  
+  stroke-width: 1;
+  stroke: var(--primary-color);
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400; 
+  animation-duration: 2.0s;
+  animation-fill-mode: forwards;
+  animation-name: draw;
+
+  &.tail-1 {
+    animation-delay: .5s;
+  }
+
+  &.tail-2 {
+    animation-delay: .7s;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.094);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100%{
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .circles{
+    display: relative;
+  }
+
+  .animated-arrow{
+    display: none;
+  }
+
+  .introduction ol {
+    padding-left: 25px;
+  }
+
+  .introduction li::marker {
+    font-size: 14px;
+  }
 }
