@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500");
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Code Pro', monospace;
+    background-color: #EEEEEE;
+}
+body {
+    overflow: hidden; /* Hide scrollbars */
+}
+
+header {
+    height: 80vh;
+    background-color: #252525;
+    color: #F5F5F5;
+}
+
+header > div {
+    padding-top: 10%;
+}
+
+header > div,
+.footer .container {
+    max-width: 65%;
+    margin: 0 auto;
+}
+
+.introduction {
+    font-size: 1.5rem; /* Adjusted font size for better readability */
+    line-height: 1.6; /* Improved line height for better text flow */
+    letter-spacing: normal; /* Adjusted letter spacing for better readability */
+    padding: 5% 5% 2% 5%; /* Adjusted padding for better spacing */
+    text-align: justify; /* Added text alignment for a cleaner look */
+    max-width: 900px; /* Added a max width to control the width of the text block */
+    margin: 0 auto; /* Center the introduction text block */
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.line-number {
+    width: 14px;
+    margin-right: 1.5rem;
+    opacity: 0.33;
+    user-select: none;
+}
+
+.line-content,
+.line-content mark {
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 4px;
+    opacity: 85%;
+}
+
+.line-content mark,
+mark {
+    background: transparent;
+    color: rgba(206, 168, 0, 0.99);
+}
+
+.empty-line {
+    background: linear-gradient(to bottom, #252423, #252525);
+}
+
+.empty-line .line-number {
+    display: block;
+}
+
+.empty-line .line-number-a {
+    opacity: 0.15;
+}
+
+.empty-line .line-number-b {
+    opacity: 0.1;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(206, 168, 0, 0.99);
+    text-decoration: none;
+}
+
+.footer {
+    height: 100%;
+    padding: 2%;
+    background-color: #252525;
+    color: #F5F5F5;
+}
+
+.footer-content {
+    padding-bottom: 5vh;
+}
+
+@media only screen and (max-width: 767px) {
+    header > div,
+    .introduction {
+        padding-top: 5%;
+        max-width: 80%; /* More responsive width */
+    }
+
+    header {
+        height: 90vh;
+    }
+
+    .introduction {
+        font-size: 1rem; 
+        padding: 5% 3%; 
+    }
+}
