@@ -19,7 +19,7 @@ body {
   color: var(--primary-color);
   min-height: 100vh;
   padding-block: 10px;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
